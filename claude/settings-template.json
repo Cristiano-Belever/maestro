@@ -1,0 +1,37 @@
+{
+  "//": "MAESTRO · template de hooks para Claude Code. Mescle este bloco 'hooks' no .claude/settings.json do projeto-alvo. Os 3 scripts vivem em .claude/hooks/ e são invocados com node. $CLAUDE_PROJECT_DIR resolve para a raiz do projeto (pai de .claude/).",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|NotebookEdit|Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/flight-recorder.cjs\""
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/tdd-guard.cjs\""
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/cortina.cjs\""
+          }
+        ]
+      }
+    ]
+  }
+}

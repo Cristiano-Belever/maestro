@@ -1,0 +1,14 @@
+# Nada de estado operacional ou material privado no repo publico do framework.
+.planning/
+.claude/settings.local.json
+talentos-mestre/
+audit/
+context/
+
+# Sistema
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Temporarios de teste
+maestro-smoke-*/
